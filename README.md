@@ -1,6 +1,8 @@
 
 __BOT TESTE__
 
+Para editar o BOT TESTE /root/BOT/botssh
+
 <!-- Abre uma nova janela -->
 <a href="https://github.com/NT-GIT-HUB/VPS-MANAGER-1.0" target="_blank">
   VPS MANAGER
