@@ -3,7 +3,7 @@ clear
 #--------[ DESENVOLVIDO POR @TNet10 ]-----------#
 source ShellBot.sh
 touch lista
-[[ -z $1 ]] && {
+[[ -z $api_bot ]] && {
     clear && echo "INFORME O TOKEN" && return 0
 }
 # Informações Server 2
@@ -14,6 +14,13 @@ ip_server3="SEU-IP-AQUI"
 senha_server3="SUA-SENHA-AQUI"
 [[ ! -e RESET ]] && touch RESET
 api_bot=$1
+nome_btn1=$2
+nome_btn2=$3
+link_btn2=$4
+nome_btn3=$5
+link_btn3=$6
+tempo_bot=$7
+msg_bot=$8
 ShellBot.init --token "$api_bot" --monitor --flush
 ShellBot.username
 
@@ -21,7 +28,7 @@ ShellBot.username
 menu() {
     local msg
         msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>•••••• OLA SEJA BEM VINDO •••••</b>\n"
+        msg+="<b>"$msg_bot"</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
         msg+="Gere seu teste agora mesmo!"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -41,7 +48,7 @@ criarteste() {
     usuario=$(echo GDF$(( RANDOM% + 250 )))
     senha='1234'
     limite='2'
-    tempo='24'
+    tempo="$tempo_bot"
     tuserdate=$(date '+%C%y/%m/%d' -d " +1 days")
     useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
     (echo "$senha";echo "$senha") | passwd $usuario > /dev/null 2>&1
@@ -73,7 +80,7 @@ criarteste2() {
     usuario=$(echo GDF$(( RANDOM% + 250 )))
     senha='1234'
     limite='2'
-    tempo='48'
+    tempo="$tempo_bot"
     tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
     if sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 echo "ok" 1>/dev/null 2>/dev/null; then
 		sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 << EOF
@@ -114,7 +121,7 @@ criarteste3() {
     usuario=$(echo GDF$(( RANDOM% + 250 )))
     senha='1234'
     limite='2'
-    tempo='24'
+    tempo="$tempo_bot"
     tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
     if sshpass -p "$senha_server3" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server3 echo "ok" 1>/dev/null 2>/dev/null; then
 		sshpass -p "$senha_server3" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server3 << EOF
@@ -155,10 +162,10 @@ infouser () {
 
 unset botao1
 botao1=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'GERAR CONTA SSH' --callback_data 'gerarssh'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text "$nome_btn1" --callback_data 'gerarssh'
 #ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🇨🇦 GERAR SSH CA 01 🇨🇦' --callback_data 'gerarssh2'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text 'BAIXAR APP' --callback_data '2' --url 'https://play.google.com/store/apps/details?id=com.net.free'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text 'TELEGRAM' --callback_data '3' --url 'https://t.me/NT_Injector'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text "$nome_btn2" --callback_data '2' --url "$link_btn2"
+ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text "$nome_btn3" --callback_data '3' --url "$link_btn3"
 #ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '⬇️ OUTROS APPS ⬇️' --callback_data '5' --url 'https://tnetssh.xyz/downloads'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function criarteste2 --callback_data gerarssh2
