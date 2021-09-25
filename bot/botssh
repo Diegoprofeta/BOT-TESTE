@@ -4,8 +4,30 @@ clear
 source ShellBot.sh
 touch lista
 [[ -z $api_bot ]] && {
-    clear && echo "INFORME O TOKEN" && return 0
+    clear && echo "OK" && return 0
 }
+[[ -z $nome_btn1 ]] && {
+    clear && echo "OK" && return 0
+}
+[[ -z $nome_btn2 ]] && {
+    clear && echo "OK" && return 0
+}
+[[ -z $link_btn2 ]] && {
+    clear && echo "OK" && return 0
+}
+[[ -z $nome_btn3 ]] && {
+    clear && echo "OK" && return 0
+}
+[[ -z $link_btn3 ]] && {
+    clear && echo "OK" && return 0
+}
+[[ -z $tempo_bot ]] && {
+    clear && echo "OK" && return 0
+}
+[[ -z $msg_bot ]] && {
+    clear && echo "OK" && return 0
+}
+
 # Informações Server 2
 ip_server2="SEU-IP-AQUI"
 senha_server2="SUA-SENHA"
