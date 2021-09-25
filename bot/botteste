@@ -21,6 +21,12 @@
     echo -ne "\n\033[1;32m MENSAGEM DE BOAS VINDAS\033[1;37m: "; read msg
     cd $HOME/BOT
     screen -dmS bot_teste ./botssh $token $btn1 $btn2 $btnlink2 $btn3 $btnlink3 $tempo $msg> /dev/null 2>&1
+[[ $(grep -wc "bot_teste" /etc/autostart) = '0' ]] && {
+                echo -e "ps x | grep 'bot_teste' | grep -v 'grep' || cd /root/BOT && sudo screen -dmS bot_teste ./botssh $token $btn1 $btn2 $btnlink2 $btn3 $btnlink3 $tempo $msg && cd $HOME" >>/etc/autostart
+            } || {
+                sed -i '/bot_teste/d' /etc/autostart
+                echo -e "ps x | grep 'bot_teste' | grep -v 'grep' || cd /root/BOT && sudo screen -dmS bot_teste ./botssh $token $btn1 $btn2 $btnlink2 $btn3 $btnlink3 $tempo $msg && cd $HOME" >>/etc/autostart
+            }
     clear && echo "BOT ATIVADO"
 } || {
     screen -r -S "bot_teste" -X quit
