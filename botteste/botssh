@@ -3,9 +3,59 @@ clear
 #--------[ DESENVOLVIDO POR @TNet10 ]-----------#
 source ShellBot.sh
 touch lista
-[[ -z $1 ]] && {
+
+
+[[ -z $api_bot ]] && {
     clear && echo "INFORME O TOKEN" && return 0
 }
+
+[[ -z $hora_bot ]] && {
+    clear && echo "INFORME O TEMPO DE DURAÇÃO" && return 0
+}
+
+[[ -z $boasvindas_bot ]] && {
+    clear && echo "MENSAGEM DE BOAS VINDAS" && return 0
+}
+
+[[ -z $tentativa_bot ]] && {
+    clear && echo "MENSAGEM DE BOAS VINDAS" && return 0
+}
+
+[[ -z $msg_final ]] && {
+    clear && echo "MENSAGEM AO CRIAR CONTA SSH" && return 0
+}
+
+[[ -z $bnt1_bot ]] && {
+    clear && echo "INFORME O NOME DO PRIMEIRO BOTÃO 1" && return 0
+}
+
+[[ -z $bnt2_bot ]] && {
+    clear && echo "INFORME O LINK DO BOTÃO 2" && return 0
+}
+[[ -z $btn2_link ]] && {
+    clear && echo "INFORME O LINK DO BOTÃO 2" && return 0
+}
+
+[[ -z $bnt3_bot ]] && {
+    clear && echo "INFORME O LINK DO BOTÃO 3" && return 0
+}
+[[ -z $btn3_link ]] && {
+    clear && echo "INFORME O LINK DO BOTÃO 3" && return 0
+}
+
+
+
+api_bot=$1
+hora_bot=$2
+boasvindas_bot=$3
+tentativa_bot=$4
+msg_final=$5
+bnt1_bot=$6
+bnt2_bot=$7
+btn2_link=$8
+bnt3_bot=$9
+btn3_link=$10
+
 # Informações Server 2
 ip_server2="SEU-IP-AQUI"
 senha_server2="SUA-SENHA"
@@ -13,7 +63,6 @@ senha_server2="SUA-SENHA"
 ip_server3="SEU-IP-AQUI"
 senha_server3="SUA-SENHA-AQUI"
 [[ ! -e RESET ]] && touch RESET
-api_bot=$1
 ShellBot.init --token "$api_bot" --monitor --flush
 ShellBot.username
 
@@ -21,7 +70,7 @@ ShellBot.username
 menu() {
     local msg
         msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>•••••• OLA SEJA BEM VINDO •••••</b>\n"
+        msg+="<b>$boasvindas_bot</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
         msg+="Gere seu teste agora mesmo!"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -35,13 +84,13 @@ menu() {
 criarteste() {
     [[ $(grep -wc ${callback_query_from_id} lista) != '0' ]] && {
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-         --text "VOCÊ JA CRIOU SUA CONTA SSH HOJE !"
+         --text "$tentativa_bot"
       return 0
     }
     usuario=$(echo GDF$(( RANDOM% + 250 )))
     senha='1234'
     limite='2'
-    tempo='24'
+    tempo="$hora_bot"
     tuserdate=$(date '+%C%y/%m/%d' -d " +1 days")
     useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
     (echo "$senha";echo "$senha") | passwd $usuario > /dev/null 2>&1
@@ -155,10 +204,10 @@ infouser () {
 
 unset botao1
 botao1=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'GERAR CONTA SSH' --callback_data 'gerarssh'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text "$bnt1_bot" --callback_data 'gerarssh'
 #ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🇨🇦 GERAR SSH CA 01 🇨🇦' --callback_data 'gerarssh2'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text 'BAIXAR APP' --callback_data '2' --url 'https://play.google.com/store/apps/details?id=com.net.free'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text 'TELEGRAM' --callback_data '3' --url 'https://t.me/NT_Injector'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text "$bnt2_bot" --callback_data '2' --url "$btn2_link"
+ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text "$bnt3_bot" --callback_data '3' --url "$btn3_link"
 #ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '⬇️ OUTROS APPS ⬇️' --callback_data '5' --url 'https://tnetssh.xyz/downloads'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function criarteste2 --callback_data gerarssh2
