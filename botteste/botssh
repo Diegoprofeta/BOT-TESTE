@@ -1,38 +1,50 @@
 #!/bin/bash
 clear
-#--------[ DESENVOLVIDO POR @GDF ]-----------#
+#--------[ DESENVOLVIDO POR @TNet10 ]-----------#
 source ShellBot.sh
 touch lista
+
+
 [[ -z $api_bot ]] && {
     clear && echo "INFORME O TOKEN" && return 0
 }
+
 [[ -z $hora_bot ]] && {
     clear && echo "INFORME O TEMPO DE DURAÇÃO" && return 0
 }
+
 [[ -z $boasvindas_bot ]] && {
     clear && echo "MENSAGEM DE BOAS VINDAS" && return 0
 }
+
 [[ -z $tentativa_bot ]] && {
     clear && echo "MENSAGEM DE BOAS VINDAS" && return 0
 }
+
 [[ -z $msg_final ]] && {
     clear && echo "MENSAGEM AO CRIAR CONTA SSH" && return 0
 }
+
 [[ -z $bnt1_bot ]] && {
     clear && echo "INFORME O NOME DO PRIMEIRO BOTÃO 1" && return 0
 }
+
 [[ -z $bnt2_bot ]] && {
     clear && echo "INFORME O LINK DO BOTÃO 2" && return 0
 }
 [[ -z $btn2_link ]] && {
     clear && echo "INFORME O LINK DO BOTÃO 2" && return 0
 }
+
 [[ -z $bnt3_bot ]] && {
     clear && echo "INFORME O LINK DO BOTÃO 3" && return 0
 }
 [[ -z $btn3_link ]] && {
     clear && echo "INFORME O LINK DO BOTÃO 3" && return 0
 }
+
+
+
 api_bot=$1
 hora_bot=$2
 boasvindas_bot=$3
@@ -43,6 +55,7 @@ bnt2_bot=$7
 btn2_link=$8
 bnt3_bot=$9
 btn3_link=$10
+
 # Informações Server 2
 ip_server2="SEU-IP-AQUI"
 senha_server2="SUA-SENHA"
