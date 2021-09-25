@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-#--------[ DESENVOLVIDO POR @TNet10 ]-----------#
+#--------[ DESENVOLVIDO POR @GDF ]-----------#
 source ShellBot.sh
 touch lista
 
@@ -42,8 +42,6 @@ touch lista
 [[ -z $btn3_link ]] && {
     clear && echo "INFORME O LINK DO BOTÃO 3" && return 0
 }
-
-
 
 api_bot=$1
 hora_bot=$2
