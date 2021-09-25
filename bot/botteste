@@ -10,17 +10,17 @@
     echo -e ""
     echo -ne "\n\033[1;32m NOME DO BOTÃO 2\033[1;37m: "; read btn2
     echo -e ""
-    echo -ne "\n\033[1;32m LINK DO BOTÃO 2\033[1;37m: "; read btn2
+    echo -ne "\n\033[1;32m LINK DO BOTÃO 2\033[1;37m: "; read btnlink2
     echo -e ""
     echo -ne "\n\033[1;32m NOME DO BOTÃO 3\033[1;37m: "; read btn3
     echo -e ""
-    echo -ne "\n\033[1;32m LINK DO BOTÃO 3\033[1;37m: "; read btn3
+    echo -ne "\n\033[1;32m LINK DO BOTÃO 3\033[1;37m: "; read btnlink3
     echo -e ""
     echo -ne "\n\033[1;32m TEMPO DE DURAÇÃO\033[1;37m: "; read tempo
     echo -e ""
     echo -ne "\n\033[1;32m MENSAGEM DE BOAS VINDAS\033[1;37m: "; read msg
     cd $HOME/BOT
-    screen -dmS bot_teste ./botssh $token $btn1 $btn2 $btn2 $tempo $msg> /dev/null 2>&1
+    screen -dmS bot_teste ./botssh $token $btn1 $btn2 $btnlink2 $btn3 $btnlink3 $tempo $msg> /dev/null 2>&1
     clear && echo "BOT ATIVADO"
 } || {
     screen -r -S "bot_teste" -X quit
