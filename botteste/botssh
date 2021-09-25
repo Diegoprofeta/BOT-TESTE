@@ -21,6 +21,10 @@ touch lista
     clear && echo "MENSAGEM DE BOAS VINDAS" && return 0
 }
 
+[[ -z $msg_final ]] && {
+    clear && echo "MENSAGEM AO CRIAR CONTA SSH" && return 0
+}
+
 [[ -z $bnt1_bot ]] && {
     clear && echo "INFORME O NOME DO PRIMEIRO BOTÃO 1" && return 0
 }
@@ -42,14 +46,15 @@ touch lista
 
 
 api_bot=$1
-hora_bot=$1
-boasvindas_bot=$1
-tentativa_bot=$1
-bnt1_bot=$1
-bnt2_bot=$1
-btn2_link=$1
-bnt3_bot=$1
-btn3_link=$1
+hora_bot=$2
+boasvindas_bot=$3
+tentativa_bot=$4
+msg_final=$5
+bnt1_bot=$6
+bnt2_bot=$7
+btn2_link=$8
+bnt3_bot=$9
+btn3_link=$10
 
 # Informações Server 2
 ip_server2="SEU-IP-AQUI"
