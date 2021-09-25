@@ -21,10 +21,6 @@ touch lista
     clear && echo "MENSAGEM DE BOAS VINDAS" && return 0
 }
 
-[[ -z $msg_final ]] && {
-    clear && echo "MENSAGEM AO CRIAR CONTA SSH" && return 0
-}
-
 [[ -z $bnt1_bot ]] && {
     clear && echo "INFORME O NOME DO PRIMEIRO BOTÃO 1" && return 0
 }
@@ -49,7 +45,6 @@ api_bot=$1
 hora_bot=$1
 boasvindas_bot=$1
 tentativa_bot=$1
-msg_final=$1
 bnt1_bot=$1
 bnt2_bot=$1
 btn2_link=$1

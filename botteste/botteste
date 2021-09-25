@@ -10,8 +10,6 @@
     echo ""
     echo -ne "\n\033[1;32m MENSAGEM DE BOAS VINDAS\033[1;37m: "; read boasvindas
     echo ""
-    echo -ne "\n\033[1;32m MENSAGEM AO CRIAR CONTA SSH\033[1;37m: "; read tentarcriar
-    echo ""
     echo -ne "\n\033[1;32m INFORME O NOME BOTÃO 1\033[1;37m: "; read bnt1
     echo ""
     echo -ne "\n\033[1;32m INFORME O NOME BOTÃO 2\033[1;37m: "; read bnt2
@@ -23,12 +21,12 @@
     echo -ne "\n\033[1;32m INFORME O LINK DO BOTÃO 3\033[1;37m: "; read link3
     echo ""
     cd $HOME/BOT
-    screen -dmS bot_teste ./botssh $token $hora $boasvindas $tentarcriar $bnt1 $bnt2 $link2 $bnt3 $link3 > /dev/null 2>&1
+    screen -dmS bot_teste ./botssh $token $hora $boasvindas $bnt1 $bnt2 $link2 $bnt3 $link3 > /dev/null 2>&1
     [[ $(grep -wc "bot_teste" /etc/autostart) = '0' ]] && {
-                echo -e "ps x | grep 'bot_teste' | grep -v 'grep' || cd /root/BOT && sudo screen -dmS bot_teste ./botssh $token $hora $boasvindas $tentarcriar $bnt1 $bnt2 $link2 $bnt3 $link3 && cd $HOME" >>/etc/autostart
+                echo -e "ps x | grep 'bot_teste' | grep -v 'grep' || cd /root/BOT && sudo screen -dmS bot_teste ./botssh $token $hora $boasvindas $bnt1 $bnt2 $link2 $bnt3 $link3 && cd $HOME" >>/etc/autostart
             } || {
                 sed -i '/bot_teste/d' /etc/autostart
-                echo -e "ps x | grep 'bot_teste' | grep -v 'grep' || cd /root/BOT && sudo screen -dmS bot_teste ./botssh $token $hora $boasvindas $tentarcriar $bnt1 $bnt2 $link2 $bnt3 $link3 && cd $HOME" >>/etc/autostart
+                echo -e "ps x | grep 'bot_teste' | grep -v 'grep' || cd /root/BOT && sudo screen -dmS bot_teste ./botssh $token $hora $boasvindas $bnt1 $bnt2 $link2 $bnt3 $link3 && cd $HOME" >>/etc/autostart
             }
     clear && echo "BOT ATIVADO"
 } || {
